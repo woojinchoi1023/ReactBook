@@ -23,6 +23,7 @@ import EventPractice from "./EventPractice";
 class App extends Component {
   state = {
     a: 123,
+    b: 222,
   };
   render() {
     const name = "react";
