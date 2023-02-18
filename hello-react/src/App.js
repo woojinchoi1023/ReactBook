@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import MyComponent from "./MyComponent";
-import Counter from "./Counter";
-import Say from "./Say";
-import EventPractice from "./EventPractice";
+
+import ScrollBox from "./05Ref/ScrollBox";
 
 // function App() {
 //   const name = "react";
@@ -21,18 +19,18 @@ import EventPractice from "./EventPractice";
 // }
 
 class App extends Component {
-  state = {
-    a: 123,
-    b: 222,
-  };
   render() {
-    const name = "react";
-
     return (
       <>
-        <EventPractice></EventPractice>
-        <Counter></Counter>
-        <Say></Say>
+        <ScrollBox
+          ref={(ref) => {
+            this.ScrollBox = ref;
+          }}
+        />
+        <button onClick={() => this.ScrollBox.scrollToBottom()}>
+          to bottom
+        </button>
+        <button onClick={() => this.ScrollBox.scrollToTop()}>to top</button>
       </>
     );
   }
