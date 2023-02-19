@@ -1,19 +1,28 @@
 import React, { useEffect, useState, useReducer } from "react";
+import useInput from "./useInput";
 
-function reducer(state, action) {
-  return {
-    ...state,
-    [action.name]: action.value,
-  };
-}
+// function reducer(state, action) {
+//   return {
+//     ...state,
+//     [action.name]: action.value,
+//   };
+// }
 
 const Info = () => {
-  const [state, dispatch] = useReducer(reducer, { name: "", nickname: "" });
+  // const [state, dispatch] = useReducer(reducer, { name: "", nickname: "" });
+  // const { name, nickname } = state;
+
+  // const onChange = (e) => {
+  //   dispatch(e.target); //action = e.target
+  // };
+
+  const [state, onChange] = useInput({
+    //커스텀훅
+    name: "",
+    nickname: "",
+  });
   const { name, nickname } = state;
 
-  const onChange = (e) => {
-    dispatch(e.target); //action = e.target
-  };
   // const onChangeName = (e) => {
   //   setName(e.target.value);
   // };

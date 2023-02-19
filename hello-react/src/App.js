@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Info from "./08Hooks/Info";
 import Counters from "./08Hooks/Counters";
+import Average from "./08Hooks/Average";
 
 const App = () => {
   const [visible, setVisible] = useState(false);
@@ -20,6 +21,7 @@ const App = () => {
       </div>
       <div>
         <Counters />
+        <Average />
       </div>
     </>
   );
