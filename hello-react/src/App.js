@@ -1,27 +1,11 @@
-import React, { useState } from "react";
-import Info from "./08Hooks/Info";
-import Counters from "./08Hooks/Counters";
-import Average from "./08Hooks/Average";
+import React from "react";
+import SassComponent from "./09Style/SassComponent";
 
 const App = () => {
-  const [visible, setVisible] = useState(false);
-
   return (
     <>
       <div>
-        <button
-          onClick={() => {
-            setVisible(!visible);
-          }}
-        >
-          {visible ? "hide" : "show"}
-        </button>
-        <hr />
-        {visible && <Info />}
-      </div>
-      <div>
-        <Counters />
-        <Average />
+        <SassComponent />
       </div>
     </>
   );
