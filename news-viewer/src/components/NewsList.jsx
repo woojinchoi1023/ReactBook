@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import axios from '../../node_modules/axios/index';
+import usePromise from '../lib/usePromise';
 import NewsItem from './NewsItem';
 
 const NewsListBlock = styled.div`
@@ -22,15 +24,53 @@ const sampleArticle = {
   urlToImage: 'https://via.placeholder.com/160',
 };
 
-const NewsList = () => {
+const NewsList = ({ category }) => {
+  const [loading, response, error] = usePromise(() => {
+    const query = category === 'all' ? '' : `&category=${category}`;
+    return axios.get(
+      `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=6867935c4df94235991f01ddcf1ea868`,
+    );
+  }, [category]);
+
+  // const [articles, setArticles] = useState(null);
+  // const [loading, setLoading] = useState(false);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+
+  //     setLoading(true);
+  //     try {
+  //       const query = category === 'all' ? '' : `&category=${category}`;
+  //       const response = await axios.get(
+  //         `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=6867935c4df94235991f01ddcf1ea868`,
+  //       );
+  //       setArticles(response.data.articles);
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //     setLoading(false);
+  //   };
+  //   fetchData();
+  // }, [category]);
+
+  if (loading) {
+    return <NewsListBlock>Loading...</NewsListBlock>;
+  }
+  if (!response) {
+    return null;
+  }
+
+  if (error) {
+    return <NewsListBlock>error!!!!</NewsListBlock>;
+  }
+
+  const { articles } = response.data;
+
   return (
     <NewsListBlock>
-      <NewsItem article={sampleArticle} />
-      <NewsItem article={sampleArticle} />
-      <NewsItem article={sampleArticle} />
-      <NewsItem article={sampleArticle} />
-      <NewsItem article={sampleArticle} />
-      <NewsItem article={sampleArticle} />
+      {articles.map((article) => (
+        <NewsItem key={article.url} article={article} />
+      ))}
     </NewsListBlock>
   );
 };
