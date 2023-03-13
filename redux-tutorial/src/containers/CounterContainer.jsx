@@ -38,5 +38,5 @@ const mapDispatchToProps = (dispatch) =>
   );
 
 // export default connect(mapStateToProps, mapDispatchToProps)(CounterContainer);
-export default CounterContainer;
 //두번째 파라미터를 아예 객체 형태로 넣어 주면 connect함수가 내부적으로 bindActionCreators 작업을 대신해 줍니다.
+export default CounterContainer;

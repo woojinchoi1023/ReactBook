@@ -34,6 +34,7 @@ const TodosContainer = () => {
 };
 
 export default memo(TodosContainer);
+//지금과 같은 경우에는 todosContainer는 부모 컴포넌트인 app 컴포넌트가 리렌더링되는 일이 없으므로 불필요
 
 // export default connect(
 //   //비구조화 할당을 통해 todos를 분리하여

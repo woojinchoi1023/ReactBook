@@ -1,6 +1,7 @@
 import { createAction, handleActions } from "redux-actions";
 
 //define action type
+//문자열안에 모듈 이름을 넣음으로써 나중에 중복 방지
 const INCREASE = "counter/INCREASE";
 const DECREASE = "counter/DECREASE";
 
